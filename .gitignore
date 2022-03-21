@@ -1,0 +1,16 @@
+spring-petclinic/target/*
+spring-petclinic/build/*
+spring-petclinic/.gradle/*
+spring-petclinic/.settings/*
+spring-petclinic/.classpath
+spring-petclinic/.project
+spring-petclinic/.factorypath
+spring-petclinic/.attach_pid*
+spring-petclinic/.idea
+spring-petclinic/*.iml
+spring-petclinic/target
+spring-petclinic/.sts4-cache/
+spring-petclinic/.vscode
+spring-petclinic/_site/
+spring-petclinic/*.css
+spring-petclinic/!petclinic.css
