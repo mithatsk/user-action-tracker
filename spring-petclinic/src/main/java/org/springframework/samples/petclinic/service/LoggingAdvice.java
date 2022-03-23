@@ -15,7 +15,7 @@ public class LoggingAdvice {
 
 	Logger log = LoggerFactory.getLogger(LoggingAdvice.class);
 
-	@Pointcut(value="execution(* org.springframework.samples.petclinic.*.*.*(..))")
+    @Pointcut("execution(* org.springframework.samples.petclinic.owner.*.*(..)) || execution(* org.springframework.samples.petclinic.vet.*.*(..))")
 	public void myPointcut() {
 
 	}
@@ -28,11 +28,13 @@ public class LoggingAdvice {
 		String className = pjp.getTarget().getClass().toString();
 		Object[] array = pjp.getArgs();
 
-		log.info("method called {} : {}() Arguments : {}", className, methodName, array);
+		LoggedMethod loggedMethod = new LoggedMethod(className, methodName);
 
 		Object object = pjp.proceed();
+		String response = mapper.writeValueAsString(object);
+		loggedMethod.setResponse(mapper.writeValueAsString(response));
 
-		log.info("{} : {}() Response : {}", className, methodName, mapper.writeValueAsString(object));
+		log.info("{}, \"arguments\": {}", mapper.writeValueAsString(loggedMethod), arguments);
 
 		return object;
 	}
