@@ -34,7 +34,7 @@ public class LoggingAdvice {
 		String response = mapper.writeValueAsString(object);
 		loggedMethod.setResponse(mapper.writeValueAsString(response));
 
-		log.info("{}, \"arguments\": {}", mapper.writeValueAsString(loggedMethod), arguments);
+		log.info("{}, \"arguments\": {}", mapper.writeValueAsString(loggedMethod), array);
 
 		return object;
 	}
