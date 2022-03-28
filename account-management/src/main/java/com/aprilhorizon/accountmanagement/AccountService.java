@@ -43,7 +43,7 @@ public class AccountService {
         getAccount(accountNumber).changeName(newName);
     }
 
-    private Account getAccount(String accountNumber) {
-        return accounts.stream().filter(a -> a.getAccountNumber() == accountNumber).findFirst().get();
+    public Account getAccount(String accountNumber) {
+        return accounts.stream().filter(a -> a.getAccountNumber().equals(accountNumber)).findFirst().get();
     }
 }

@@ -1,5 +1,8 @@
 package com.aprilhorizon.accountmanagement;
 
+import com.aprilhorizon.accountmanagement.models.AccountAmountRequest;
+import com.aprilhorizon.accountmanagement.models.AccountRequest;
+import com.aprilhorizon.accountmanagement.models.ChangeAccountNameRequest;
 import com.aprilhorizon.accountmanagement.models.NewAccountRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,21 +21,50 @@ public class AccountController {
     }
 
     @GetMapping("/account/list")
+    @ResponseStatus(HttpStatus.OK)
     public List<Account> accountList() {
         return accountService.accounts;
     }
 
-    @PostMapping("/account/new")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String newAccount(@RequestBody NewAccountRequest request) {
-        System.out.println(request.getAccountName());
-        accountService.createAccount(request.getAccountName());
-        return "success";
+    @GetMapping("/account")
+    @ResponseStatus(HttpStatus.OK)
+    public Account getAccount(@RequestBody AccountRequest request) {
+        return accountService.getAccount(request.getAccountNumber());
     }
 
-    @PostMapping("/account/deposit")
-    public String deposit(@RequestBody double amount, @RequestBody String accountNumber) {
-        accountService.deposit(accountNumber, amount);
-        return "success";
+    @GetMapping("/account/balance")
+    @ResponseStatus(HttpStatus.OK)
+    public double getBalance(@RequestBody AccountRequest request) {
+        return accountService.getBalance(request.getAccountNumber());
+    }
+
+    @GetMapping("/account/name")
+    @ResponseStatus(HttpStatus.OK)
+    public String getAccountName(@RequestBody AccountRequest request) {
+        return accountService.getAccountName(request.getAccountNumber());
+    }
+
+    @PostMapping("/account/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void newAccount(@RequestBody NewAccountRequest request) {
+        accountService.createAccount(request.getAccountName());
+    }
+
+    @PutMapping("/account/changeName")
+    @ResponseStatus(HttpStatus.OK)
+    public void changeAccountName(@RequestBody ChangeAccountNameRequest request) {
+        accountService.changeName(request.getAccountNumber(), request.getNewName());
+    }
+
+    @PutMapping("/account/withdraw")
+    @ResponseStatus(HttpStatus.OK)
+    public void withdraw(@RequestBody AccountAmountRequest request) {
+        accountService.withdraw(request.getAccountNumber(), request.getAmount());
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/account/deposit")
+    public void deposit(@RequestBody AccountAmountRequest request) {
+        accountService.deposit(request.getAccountNumber(), request.getAmount());
     }
 }

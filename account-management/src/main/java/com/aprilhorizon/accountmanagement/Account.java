@@ -17,7 +17,7 @@ public class Account {
         if (this.balance >= amount)
             this.balance -= amount;
         else
-            System.out.println("Insufficient funds");
+            System.out.println("Insufficient amount");
     }
 
     public void deposit(double amount) {
