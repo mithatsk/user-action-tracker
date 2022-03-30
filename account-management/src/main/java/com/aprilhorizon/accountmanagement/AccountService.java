@@ -46,4 +46,8 @@ public class AccountService {
     public Account getAccount(String accountNumber) {
         return accounts.stream().filter(a -> a.getAccountNumber().equals(accountNumber)).findFirst().get();
     }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
 }

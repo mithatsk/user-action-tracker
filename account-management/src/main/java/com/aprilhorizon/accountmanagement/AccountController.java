@@ -23,7 +23,7 @@ public class AccountController {
     @GetMapping("/account/list")
     @ResponseStatus(HttpStatus.OK)
     public List<Account> accountList() {
-        return accountService.accounts;
+        return accountService.getAccounts();
     }
 
     @GetMapping("/account")
