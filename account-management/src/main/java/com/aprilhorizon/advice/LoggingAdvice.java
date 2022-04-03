@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import java.util.Arrays;
 
 @Aspect
 @Component
@@ -25,16 +26,16 @@ public class LoggingAdvice {
 
         String methodName = pjp.getSignature().getName();
         String className = pjp.getTarget().getClass().toString();
-        Object[] array = pjp.getArgs();
-
+        Object[] args = pjp.getArgs();
         LoggedMethod loggedMethod = new LoggedMethod(className, methodName);
 
         Object object = pjp.proceed();
         String response = mapper.writeValueAsString(object);
-        loggedMethod.setResponse(mapper.writeValueAsString(response));
+        
+        loggedMethod.setResponse(response);
 
-        log.info("{}, \"arguments\": {}", mapper.writeValueAsString(loggedMethod), array);
-
+        log.info("{}, \"arguments:\", {}", mapper.writeValueAsString(loggedMethod), args);
+    
         return object;
     }
 }
