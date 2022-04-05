@@ -1,6 +1,5 @@
 package com.aprilhorizon.advice;
 
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class LoggedMethod {
@@ -8,7 +7,7 @@ public class LoggedMethod {
     public String methodName;
     public LoggedMethodResponse response;
     public String executionTime;
-    public ChronoUnit executionTimeUnit;
+    public String executionTimeUnit;
     public ArrayList<LoggedArgument> arguments = new ArrayList<>();
 
     public LoggedMethod(String className, String methodName) {
@@ -40,11 +39,11 @@ public class LoggedMethod {
         this.executionTime = executionTime;
     }
 
-    public ChronoUnit getExecutionTimeUnit() {
+    public String getExecutionTimeUnit() {
         return executionTimeUnit;
     }
 
-    public void setExecutionTimeUnit(ChronoUnit executionTimeUnit) {
+    public void setExecutionTimeUnit(String executionTimeUnit) {
         this.executionTimeUnit = executionTimeUnit;
     }
 

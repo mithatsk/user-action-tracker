@@ -53,13 +53,12 @@ public class LoggingAspect {
         Instant end = Instant.now();
         String executionTime = String.format("%s", ChronoUnit.MILLIS.between(start, end));
         methodLog.setExecutionTime(executionTime);
-        methodLog.setExecutionTimeUnit(ChronoUnit.MILLIS);
+        methodLog.setExecutionTimeUnit(ChronoUnit.MILLIS.name().toLowerCase());
 
         ObjectMapper mapper = new ObjectMapper();
         // Check if method has a response
         if (Objects.nonNull(responseObject)) {
-            String result = mapper.writeValueAsString(responseObject);
-            LoggedMethodResponse response = new LoggedMethodResponse(result, responseObject.getClass().getName());
+            LoggedMethodResponse response = new LoggedMethodResponse(responseObject, responseObject.getClass().getName());
             methodLog.setResponse(response);
         }
 

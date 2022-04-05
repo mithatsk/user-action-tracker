@@ -1,19 +1,19 @@
 package com.aprilhorizon.advice;
 
 public class LoggedMethodResponse {
-    private String content;
+    private Object content;
     private String typeName;
 
-    public LoggedMethodResponse(String response, String typeName) {
-        this.content = response;
+    public LoggedMethodResponse(Object content, String typeName) {
+        this.content = content;
         this.typeName = typeName;
     }
 
-    public String getContent() {
+    public Object getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(Object content) {
         this.content = content;
     }
 
