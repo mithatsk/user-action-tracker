@@ -1,4 +1,4 @@
-package com.aprilhorizon.accountmanagement;
+package com.aprilhorizon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
