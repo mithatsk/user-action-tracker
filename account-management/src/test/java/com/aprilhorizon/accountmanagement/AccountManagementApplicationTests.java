@@ -1,4 +1,4 @@
-papackage com.aprilhorizon.accountmanagement;
+package com.aprilhorizon.accountmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
