@@ -1,13 +1,22 @@
-package com.aprilhorizon.accountmanagement;
+papackage com.aprilhorizon.accountmanagement;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class AccountManagementApplicationTests {
 
+    @Autowired
+    AccountController accountController;
+
     @Test
-    void contextLoads() {
+    public void contextLoads() {
+        assertNotNull(accountController);
     }
+
+}
 
 }
