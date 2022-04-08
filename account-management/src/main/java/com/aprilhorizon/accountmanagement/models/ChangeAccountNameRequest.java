@@ -13,7 +13,15 @@ public class ChangeAccountNameRequest {
         return this.accountNumber;
     }
 
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     public String getNewName() {
         return this.newName;
+    }
+
+    public void setNewName(String newName) {
+        this.newName = newName;
     }
 }
