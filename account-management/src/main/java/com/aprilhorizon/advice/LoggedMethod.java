@@ -1,4 +1,4 @@
-package com.aprilhorizon.accountmanagement.advice;
+package com.aprilhorizon.advice;
 
 public class LoggedMethod {
     public String className;
