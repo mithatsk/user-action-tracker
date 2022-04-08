@@ -1,4 +1,4 @@
-package com.aprilhorizon.accountmanagement.advice;
+package com.aprilhorizon.advice;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

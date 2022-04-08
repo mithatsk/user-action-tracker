@@ -10,4 +10,8 @@ public class AccountRequest {
     public String getAccountNumber() {
         return this.accountNumber;
     }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 }

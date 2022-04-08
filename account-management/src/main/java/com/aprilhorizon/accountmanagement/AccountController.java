@@ -45,7 +45,7 @@ public class AccountController {
     }
 
     @PostMapping("/account/new")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public void newAccount(@RequestBody NewAccountRequest request) {
         accountService.createAccount(request.getAccountName());
     }
