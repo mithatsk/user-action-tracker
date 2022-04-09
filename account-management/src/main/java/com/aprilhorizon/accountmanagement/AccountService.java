@@ -19,8 +19,10 @@ public class AccountService {
         this.accounts = new ArrayList<>();
     }
 
-    public void createAccount(String accountName) {
-        accounts.add(new Account(accountName));
+    public Account createAccount(String accountName) {
+        Account account = new Account(accountName);
+        accounts.add(account);
+        return account;
     }
 
     public void withdraw(String accountNumber, double amount) {
