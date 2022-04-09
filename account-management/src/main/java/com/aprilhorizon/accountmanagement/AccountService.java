@@ -1,6 +1,5 @@
 package com.aprilhorizon.accountmanagement;
 
-import com.aprilhorizon.accountmanagement.models.AccountRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
