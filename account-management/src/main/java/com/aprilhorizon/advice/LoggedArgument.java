@@ -5,6 +5,12 @@ public class LoggedArgument {
     private String argument;
     private String typeName;
 
+    public LoggedArgument() {
+        this.parameter = "";
+        this.argument = "";
+        this.typeName = "";
+    }
+
     public LoggedArgument(String parameter, String argument, String typeName) {
         this.parameter = parameter;
         this.argument = argument;

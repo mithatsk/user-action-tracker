@@ -3,12 +3,21 @@ package com.aprilhorizon.advice;
 import java.util.ArrayList;
 
 public class LoggedMethod {
-    public String className;
-    public String methodName;
-    public LoggedMethodResponse response;
-    public String executionTime;
-    public String executionTimeUnit;
-    public ArrayList<LoggedArgument> arguments = new ArrayList<>();
+    private String className;
+    private String methodName;
+    private LoggedMethodResponse response;
+    private String executionTime;
+    private String executionTimeUnit;
+    private ArrayList<LoggedArgument> arguments = new ArrayList<>();
+
+    public LoggedMethod() {
+        this.className = "";
+        this.methodName = "";
+        this.response = new LoggedMethodResponse();
+        this.executionTime = "0";
+        this.executionTimeUnit = "milis";
+        this.arguments = new ArrayList<>();
+    }
 
     public LoggedMethod(String className, String methodName) {
         this.className = className;

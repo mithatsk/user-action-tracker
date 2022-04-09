@@ -4,6 +4,11 @@ public class LoggedMethodResponse {
     private Object content;
     private String typeName;
 
+    public LoggedMethodResponse() {
+        this.content = new Object();
+        this.typeName = "";
+    }
+
     public LoggedMethodResponse(Object content, String typeName) {
         this.content = content;
         this.typeName = typeName;
