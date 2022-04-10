@@ -1,4 +1,4 @@
-package com.aprilhorizon.advice;
+package com.aprilhorizon.advice.models;
 
 public class LogResultTuple<MethodLog extends LoggedMethod, Object> {
     private MethodLog methodLog;

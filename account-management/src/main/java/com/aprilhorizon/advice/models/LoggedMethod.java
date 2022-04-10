@@ -1,4 +1,4 @@
-package com.aprilhorizon.advice;
+package com.aprilhorizon.advice.models;
 
 import java.util.ArrayList;
 

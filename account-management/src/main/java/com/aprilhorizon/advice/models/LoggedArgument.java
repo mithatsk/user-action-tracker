@@ -1,4 +1,4 @@
-package com.aprilhorizon.advice;
+package com.aprilhorizon.advice.models;
 
 public class LoggedArgument {
     private String parameter;
