@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class AccountController {
@@ -47,7 +48,8 @@ public class AccountController {
     @PostMapping("/account/new")
     @ResponseStatus(HttpStatus.OK)
     public Account newAccount(@RequestBody NewAccountRequest request) {
-        return accountService.createAccount(request.getAccountName());
+        String accountNumber = UUID.randomUUID().toString();
+        return accountService.createAccount(request.getAccountName(), accountNumber);
     }
 
     @PutMapping("/account/changeName")

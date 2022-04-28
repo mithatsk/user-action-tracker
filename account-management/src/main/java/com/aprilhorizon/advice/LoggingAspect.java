@@ -4,6 +4,7 @@ import com.aprilhorizon.advice.models.LogResultTuple;
 import com.aprilhorizon.advice.models.LoggedArgument;
 import com.aprilhorizon.advice.models.LoggedMethod;
 import com.aprilhorizon.advice.models.LoggedMethodResponse;
+import com.aprilhorizon.logger.ASELogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,8 +12,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.CodeSignature;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.time.Instant;
@@ -23,7 +22,7 @@ import java.util.*;
 @Component
 public class LoggingAspect {
 
-    private Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
+    private ASELogger logger = new ASELogger();
 
     @Pointcut(value="execution(* com.aprilhorizon.accountmanagement.AccountService.*(..) )")
     public void accountManagementPointcut() {}
@@ -56,10 +55,9 @@ public class LoggingAspect {
         Object responseObject = joinPoint.proceed();
         Instant end = Instant.now();
         String executionTime = String.format("%s", ChronoUnit.MILLIS.between(start, end));
-        methodLog.setExecutionTime(executionTime);
-        methodLog.setExecutionTimeUnit(ChronoUnit.MILLIS.name().toLowerCase());
+        methodLog.setExecutionDuration(executionTime);
+        methodLog.setExecutionDurationUnit(ChronoUnit.MILLIS.name().toLowerCase());
 
-        ObjectMapper mapper = new ObjectMapper();
         // Check if method has a response
         if (Objects.nonNull(responseObject)) {
             LoggedMethodResponse response = new LoggedMethodResponse(responseObject, responseObject.getClass().getName());
