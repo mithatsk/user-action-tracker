@@ -16,8 +16,8 @@ public class Account {
         this.balance = 0.0;
     }
 
-    public Account(String accountName) {
-        this.accountNumber = UUID.randomUUID().toString();;
+    public Account(String accountName, String accountNumber) {
+        this.accountNumber = accountNumber;
         this.accountName = accountName;
         this.balance = 0;
     }
