@@ -4,7 +4,6 @@ import com.aprilhorizon.accountmanagement.models.AccountAmountRequest;
 import com.aprilhorizon.accountmanagement.models.AccountRequest;
 import com.aprilhorizon.accountmanagement.models.ChangeAccountNameRequest;
 import com.aprilhorizon.accountmanagement.models.NewAccountRequest;
-import com.aprilhorizon.bot.ASEBot;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -35,8 +34,6 @@ public class AccountControllerTests {
 
     @Test
     public void Should_Create_Account() throws Exception {
-        ASEBot bot = new ASEBot();
-        bot.replicateActions();
         NewAccountRequest account = new NewAccountRequest();
         mockMvc.perform(post("/account/new")
                         .contentType(MediaType.APPLICATION_JSON)
