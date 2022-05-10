@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class ASEBot {
 
     private ASELogger logger = new ASELogger();
+    AccountService accountService;
 
     public void replicateActions() throws Exception {
         String actions = "[" + logger.read() + "]";
@@ -25,7 +26,9 @@ public class ASEBot {
     }
 
     private void invokeMethod(LoggedMethod loggedMethod) throws Exception {
-        AccountService accountService = (AccountService) constructService(loggedMethod);
+        if (this.accountService == null) {
+            this.accountService = (AccountService) constructService(loggedMethod);
+        }
 
         ArrayList<LoggedArgument> arguments = loggedMethod.getArguments();
         Class<?>[] parameterTypes = constructParameterTypes(arguments);
