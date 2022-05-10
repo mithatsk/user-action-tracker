@@ -53,6 +53,6 @@ public class ASELogger {
             e.printStackTrace();
         }
 
-        return "[" + result.toString() + "]";
+        return result.toString();
     }
 }
