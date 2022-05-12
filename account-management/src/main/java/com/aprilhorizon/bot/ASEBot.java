@@ -27,7 +27,7 @@ public class ASEBot {
 
     private void invokeMethod(LoggedMethod loggedMethod) throws Exception {
         if (this.accountService == null) {
-            this.accountService = (AccountService) constructService(loggedMethod);
+            this.accountService = (AccountService) constructInstance(loggedMethod);
         }
 
         ArrayList<LoggedArgument> arguments = loggedMethod.getArguments();
@@ -38,7 +38,7 @@ public class ASEBot {
         method.invoke(accountService, args);
     }
 
-    private Object constructService(LoggedMethod loggedMethod) throws Exception {
+    private Object constructInstance(LoggedMethod loggedMethod) throws Exception {
         String fullClassName = loggedMethod.getClassName();
         String className = fullClassName.substring(fullClassName.lastIndexOf(' ') + 1);
         Class aClass = Class.forName(className);
