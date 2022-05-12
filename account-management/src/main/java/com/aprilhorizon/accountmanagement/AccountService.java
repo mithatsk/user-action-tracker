@@ -26,12 +26,12 @@ public class AccountService {
         return account;
     }
 
-    public void withdraw(String accountNumber, double amount) {
+    public void withdraw(String accountNumber, Double amount) {
         getAccount(accountNumber).withdraw(amount);
         System.out.println("withdrawn, account number:" + accountNumber);
     }
 
-    public void deposit(String accountNumber, double amount) {
+    public void deposit(String accountNumber, Double amount) {
         getAccount(accountNumber).deposit(amount);
         System.out.println("deposited, account number:" + accountNumber);
     }

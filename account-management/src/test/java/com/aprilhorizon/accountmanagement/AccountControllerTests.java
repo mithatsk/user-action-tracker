@@ -96,7 +96,7 @@ public class AccountControllerTests {
         Account account = asObject(result, Account.class);
 
         AccountAmountRequest accountAmountRequest = new AccountAmountRequest();
-        accountAmountRequest.setAmount(50);
+        accountAmountRequest.setAmount(50.0);
         accountAmountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/deposit")
@@ -133,7 +133,7 @@ public class AccountControllerTests {
 
         //2 - Deposit account
         AccountAmountRequest accountAmountRequest = new AccountAmountRequest();
-        accountAmountRequest.setAmount(200);
+        accountAmountRequest.setAmount(200.0);
         accountAmountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/deposit")
@@ -151,7 +151,7 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
+        Double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
 
         //4 - Withdraw amount
         AccountAmountRequest accountAmountWithdrawReq = new AccountAmountRequest();
@@ -172,7 +172,7 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
 
         Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
     }
@@ -212,7 +212,7 @@ public class AccountControllerTests {
         .andExpect(status().isOk())
         .andReturn();
 
-        double balanceAfterWithdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWithdraw = asObject(resultAfterWithdraw, Double.class);
 
         Assertions.assertEquals(balanceAfterWithdraw, 0);
     }
@@ -269,7 +269,7 @@ public class AccountControllerTests {
 
         //2 - Deposit account
         AccountAmountRequest accountAmountRequest = new AccountAmountRequest();
-        accountAmountRequest.setAmount(200);
+        accountAmountRequest.setAmount(200.0);
         accountAmountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/deposit")
@@ -287,7 +287,7 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
+        Double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
 
         //4 - Withdraw amount
         AccountAmountRequest accountAmountWithdrawReq = new AccountAmountRequest();
@@ -307,7 +307,7 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
 
         Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
     }

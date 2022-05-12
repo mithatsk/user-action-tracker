@@ -2,13 +2,11 @@ package com.aprilhorizon.accountmanagement;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.UUID;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
     private String accountNumber;
     private String accountName;
-    private double balance;
+    private Double balance;
 
     public Account() {
         this.accountNumber = "";
@@ -19,7 +17,7 @@ public class Account {
     public Account(String accountName, String accountNumber) {
         this.accountNumber = accountNumber;
         this.accountName = accountName;
-        this.balance = 0;
+        this.balance = 0.0;
     }
 
     public void withdraw(double amount) {
@@ -33,11 +31,11 @@ public class Account {
         this.balance += amount;
     }
 
-    public double getBalance() {
+    public Double getBalance() {
         return this.balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
