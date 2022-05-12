@@ -6,6 +6,8 @@ import com.aprilhorizon.advice.models.LoggedMethod;
 import com.aprilhorizon.logger.ASELogger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.beans.PropertyEditor;
+import java.beans.PropertyEditorManager;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +68,9 @@ public class ASEBot {
                 argument -> {
                     try {
                         Class classType = Class.forName(argument.getTypeName());
-                        return toObject(classType, argument.getArgument());
+                        PropertyEditor editor = PropertyEditorManager.findEditor(classType);
+                        editor.setAsText(argument.getArgument());
+                        return editor.getValue();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                         return null;
@@ -79,16 +83,5 @@ public class ASEBot {
 
     private <T> T asObject(String result, Class<T> type) throws Exception {
         return new ObjectMapper().readValue(result, type);
-    }
-
-    public static Object toObject(Class clazz, String value) {
-        if (Boolean.class == clazz) return Boolean.parseBoolean(value);
-        if (Byte.class == clazz) return Byte.parseByte(value);
-        if (Short.class == clazz) return Short.parseShort(value);
-        if (Integer.class == clazz) return Integer.parseInt(value);
-        if (Long.class == clazz) return Long.parseLong(value);
-        if (Float.class == clazz) return Float.parseFloat(value);
-        if (Double.class == clazz) return Double.parseDouble(value);
-        return value;
     }
 }
