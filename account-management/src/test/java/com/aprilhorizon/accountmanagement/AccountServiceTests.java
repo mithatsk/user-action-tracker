@@ -29,22 +29,22 @@ public class AccountServiceTests {
     @Test
     public void testBalanceAfterDeposit() {
         accountService.createAccount("Saving Account", "123");
-        accountService.deposit("123", 500);
+        accountService.deposit("123", 500.0);
         assertEquals(500, accountService.getBalance("123"));
     }
 
     @Test
     public void testInsufficientBalanceWithdraw() {
         accountService.createAccount("Saving Account", "123");
-        accountService.withdraw("123", 50);
+        accountService.withdraw("123", 50.0);
         assertEquals(0, accountService.getBalance("123"));
     }
 
     @Test
     public void testBalanceAfterWithdraw() {
         accountService.createAccount("Saving Account", "123");
-        accountService.deposit("123", 80);
-        accountService.withdraw("123", 50);
+        accountService.deposit("123", 80.0);
+        accountService.withdraw("123", 50.0);
         assertEquals(30, accountService.getBalance("123"));
     }
 

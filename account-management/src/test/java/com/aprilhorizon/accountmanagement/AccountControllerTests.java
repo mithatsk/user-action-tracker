@@ -2,12 +2,12 @@ package com.aprilhorizon.accountmanagement;
 
 import com.aprilhorizon.accountmanagement.models.AccountAmountRequest;
 import com.aprilhorizon.accountmanagement.models.AccountRequest;
+import com.aprilhorizon.accountmanagement.models.ChangeAccountNameRequest;
 import com.aprilhorizon.accountmanagement.models.NewAccountRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -96,7 +96,7 @@ public class AccountControllerTests {
         Account account = asObject(result, Account.class);
 
         AccountAmountRequest accountAmountRequest = new AccountAmountRequest();
-        accountAmountRequest.setAmount(50);
+        accountAmountRequest.setAmount(50.0);
         accountAmountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/deposit")
@@ -133,7 +133,7 @@ public class AccountControllerTests {
 
         //2 - Deposit account
         AccountAmountRequest accountAmountRequest = new AccountAmountRequest();
-        accountAmountRequest.setAmount(200);
+        accountAmountRequest.setAmount(200.0);
         accountAmountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/deposit")
@@ -151,7 +151,7 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
+        Double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
 
         //4 - Withdraw amount
         AccountAmountRequest accountAmountWithdrawReq = new AccountAmountRequest();
@@ -172,30 +172,28 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
 
         Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
     }
 
     @Test
-    public void Should_Amount_Not_Change_After_Withdraw() {
+    public void Should_Amount_Not_Change_After_Withdraw() throws Exception {
         // Create an account and withdraw some amount when balance is less than the amount withdrawn and check if balance did not change.
+        // 1 - Create account
 
-     
-  1// Create account 
-
-      NewAccountRequest newAccountRequest = new NewAccountRequest();
+        NewAccountRequest newAccountRequest = new NewAccountRequest();
         newAccountRequest.setAccountName("first-account");
         MvcResult result = mockMvc.perform(post("/account/new")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(newAccountRequest)))
-                .andExpect(status().isOk())
-                .andReturn();
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(asJsonString(newAccountRequest)))
+                    .andExpect(status().isOk())
+                    .andReturn();
 
-     Account account = asObject(result, Account.class);
+        Account account = asObject(result, Account.class);
 
-    2// withdraw amount 
-       AccountAmountRequest accountAmountWithdrawReq = new AccountAmountRequest();
+        // 2 - withdraw amount
+        AccountAmountRequest accountAmountWithdrawReq = new AccountAmountRequest();
         accountAmountWithdrawReq.setAccountNumber(account.getAccountNumber());
         accountAmountWithdrawReq.setAmount(60.0);
 
@@ -204,24 +202,26 @@ public class AccountControllerTests {
                         .content(asJsonString(accountAmountWithdrawReq)))
                 .andExpect(status().isOk());
 
-   3// Check balance after withdraw
+        // 3 - Check balance after withdraw
+        AccountRequest accountRequest = new AccountRequest();
+        accountRequest.setAccountNumber(account.getAccountNumber());
 
-             MvcResult resultAfterWithdraw = mockMvc.perform(get("/account/balance")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountRequest)))
-                .andExpect(status().isOk())
-                .andReturn();
+        MvcResult resultAfterWithdraw = mockMvc.perform(get("/account/balance")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(accountRequest)))
+        .andExpect(status().isOk())
+        .andReturn();
 
-        double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWithdraw = asObject(resultAfterWithdraw, Double.class);
 
-        Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
+        Assertions.assertEquals(balanceAfterWithdraw, 0);
     }
 
     @Test
-    public void Should_Name_Change_After_Change_Name_Called() {
+    public void Should_Name_Change_After_Change_Name_Called() throws Exception {
         // Create an account and change the name then check if name is updated.
 
-//1 Create Account
+        //1 Create Account
         NewAccountRequest newAccountRequest = new NewAccountRequest();
         newAccountRequest.setAccountName("first-account");
         MvcResult result = mockMvc.perform(post("/account/new")
@@ -232,27 +232,31 @@ public class AccountControllerTests {
 
         Account account = asObject(result, Account.class);
 
-   //change Name 
-
-         AccountchangeName accountchangeNameReq = new AccountNameRequest();
-        accountchangeNameReq.setNewname(account.getAccountName());
-        accountNewNameReq.setName(0.0);
+        //2 change Name
+        ChangeAccountNameRequest changeAccountNameRequest = new ChangeAccountNameRequest();
+        changeAccountNameRequest.setNewName("ABC");
+        changeAccountNameRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/changeName")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountchangeNameReq)))
+                        .content(asJsonString(changeAccountNameRequest)))
                 .andExpect(status().isOk());
 
-//check new name on the list
+        //3 Validate if name is changed
+        AccountRequest accountRequest = new AccountRequest();
+        accountRequest.setAccountNumber(account.getAccountNumber());
 
+        mockMvc.perform(get("/account")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(accountRequest)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.accountName", Matchers.not(account.getAccountName())));
     }
 
     @Test
-    public void Should_Balance_Return_Result() {
+    public void Should_Balance_Return_Result() throws Exception {
         // Create an account and call balance endpoint to see if it returns a value
-
-
-//1 Create Account
+        //1 Create Account
         NewAccountRequest newAccountRequest = new NewAccountRequest();
         newAccountRequest.setAccountName("first-account");
         MvcResult result = mockMvc.perform(post("/account/new")
@@ -265,7 +269,7 @@ public class AccountControllerTests {
 
         //2 - Deposit account
         AccountAmountRequest accountAmountRequest = new AccountAmountRequest();
-        accountAmountRequest.setAmount(200);
+        accountAmountRequest.setAmount(200.0);
         accountAmountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(put("/account/deposit")
@@ -283,7 +287,7 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
+        Double balanceAfterDeposit = asObject(resultAfterDeposit, Double.class);
 
         //4 - Withdraw amount
         AccountAmountRequest accountAmountWithdrawReq = new AccountAmountRequest();
@@ -295,7 +299,6 @@ public class AccountControllerTests {
                         .content(asJsonString(accountAmountWithdrawReq)))
                 .andExpect(status().isOk());
 
-
         //5 - Check Balance after withdraw
 
         MvcResult resultAfterWithdraw = mockMvc.perform(get("/account/balance")
@@ -304,10 +307,9 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
 
         Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
-
     }
 
     private <T> T asObject(MvcResult result, Class<T> type) throws Exception {
@@ -322,5 +324,4 @@ public class AccountControllerTests {
             throw new RuntimeException(e);
         }
     }
-
 }

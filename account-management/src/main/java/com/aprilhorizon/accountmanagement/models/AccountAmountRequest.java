@@ -2,10 +2,10 @@ package com.aprilhorizon.accountmanagement.models;
 
 public class AccountAmountRequest {
     private String accountNumber;
-    private double amount;
+    private Double amount;
 
     public AccountAmountRequest() {
-        this.amount = 0;
+        this.amount = 0.0;
         this.accountNumber = "";
     }
 
@@ -13,7 +13,15 @@ public class AccountAmountRequest {
         return accountNumber;
     }
 
-    public double getAmount() {
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public Double getAmount() {
         return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 }

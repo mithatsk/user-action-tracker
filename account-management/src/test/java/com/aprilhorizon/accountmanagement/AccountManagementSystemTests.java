@@ -46,7 +46,7 @@ public class AccountManagementSystemTests {
     public void testCreateNewAccount() {
         RestTemplate restTemplate = new RestTemplate();
         String newAccountPostUrl = "http://localhost:8080/account/new";
-        Account account = new Account("XYZ");
+        Account account = new Account("XYZ", "123");
         ResponseEntity<Account> entity = restTemplate.postForEntity(newAccountPostUrl, account, Account.class);
         assertEquals(HttpStatus.CREATED, entity.getStatusCode());
     }
