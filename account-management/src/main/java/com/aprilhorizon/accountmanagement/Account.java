@@ -21,10 +21,11 @@ public class Account {
     }
 
     public void withdraw(double amount) {
-        if (this.balance >= amount)
+        if (this.balance >= amount) {
             this.balance -= amount;
-        else
+        } else {
             System.out.println("Insufficient amount");
+        }
     }
 
     public void deposit(double amount) {

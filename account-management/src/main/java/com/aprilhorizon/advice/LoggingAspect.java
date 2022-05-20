@@ -16,14 +16,16 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
 
 @Aspect
 @Component
 public class LoggingAspect {
 
-    private ASELogger logger = new ASELogger();
+    private final ASELogger logger = new ASELogger();
 
+    @SuppressWarnings("EmptyMethod")
     @Pointcut(value="execution(* com.aprilhorizon.accountmanagement.AccountService.*(..) )")
     public void accountManagementPointcut() {}
 
@@ -63,7 +65,6 @@ public class LoggingAspect {
             LoggedMethodResponse response = new LoggedMethodResponse(responseObject, responseObject.getClass().getName());
             methodLog.setResponse(response);
         }
-
 
         return new LogResultTuple<>(methodLog, responseObject);
     }

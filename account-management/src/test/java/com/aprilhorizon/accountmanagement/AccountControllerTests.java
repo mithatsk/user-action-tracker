@@ -22,18 +22,16 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 public class AccountControllerTests {
 
-    private AccountService accountService;
-
     private MockMvc mockMvc;
 
     @BeforeEach
     public void setup() {
-        this.accountService = new AccountService();
-        this.mockMvc = standaloneSetup(new AccountController(this.accountService)).alwaysExpect(status().isOk()).build();
+        AccountService accountService = new AccountService();
+        this.mockMvc = standaloneSetup(new AccountController(accountService)).alwaysExpect(status().isOk()).build();
     }
 
     @Test
-    public void Should_Create_Account() throws Exception {
+    public void testShouldCreateAccount() throws Exception {
         NewAccountRequest account = new NewAccountRequest();
         mockMvc.perform(post("/account/new")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -42,7 +40,7 @@ public class AccountControllerTests {
     }
 
     @Test
-    public void Should_List_All() throws Exception {
+    public void testShouldListAll() throws Exception {
         NewAccountRequest newAccountRequest = new NewAccountRequest();
         newAccountRequest.setAccountName("first-account");
         MvcResult result = mockMvc.perform(post("/account/new")
@@ -60,7 +58,7 @@ public class AccountControllerTests {
     }
 
     @Test
-    public void Should_Account_Exist() throws Exception {
+    public void testShouldAccountExist() throws Exception {
         NewAccountRequest newAccountRequest = new NewAccountRequest();
         newAccountRequest.setAccountName("first-account");
         MvcResult result = mockMvc.perform(post("/account/new")
@@ -82,7 +80,7 @@ public class AccountControllerTests {
     }
 
     @Test
-    public void Should_Increase_Balance_After_Deposit() throws Exception {
+    public void testShouldIncreaseBalanceAfterDeposit() throws Exception {
         // Create an account and deposit some amount and check if the amount is greater than zero
 
         NewAccountRequest newAccountRequest = new NewAccountRequest();
@@ -116,7 +114,7 @@ public class AccountControllerTests {
     }
 
     @Test
-    public void Should_Decrease_Balance_After_Withdraw() throws Exception {
+    public void testShouldDecreaseBalanceAfterWithdraw() throws Exception {
         // Create an account and deposit some amount
         // and then withdraw some amount to check if the amount has changed
 
@@ -172,13 +170,13 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        Double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWithdraw = asObject(resultAfterWithdraw, Double.class);
 
-        Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
+        Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWithdraw);
     }
 
     @Test
-    public void Should_Amount_Not_Change_After_Withdraw() throws Exception {
+    public void testShouldAmountNotChangeAfterWithdraw() throws Exception {
         // Create an account and withdraw some amount when balance is less than the amount withdrawn and check if balance did not change.
         // 1 - Create account
 
@@ -218,7 +216,7 @@ public class AccountControllerTests {
     }
 
     @Test
-    public void Should_Name_Change_After_Change_Name_Called() throws Exception {
+    public void testShouldNameChangeAfterChangeNameCalled() throws Exception {
         // Create an account and change the name then check if name is updated.
 
         //1 Create Account
@@ -254,7 +252,7 @@ public class AccountControllerTests {
     }
 
     @Test
-    public void Should_Balance_Return_Result() throws Exception {
+    public void testShouldBalanceReturnResult() throws Exception {
         // Create an account and call balance endpoint to see if it returns a value
         //1 Create Account
         NewAccountRequest newAccountRequest = new NewAccountRequest();
@@ -307,9 +305,9 @@ public class AccountControllerTests {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        Double balanceAfterWitdraw = asObject(resultAfterWithdraw, Double.class);
+        Double balanceAfterWithdraw = asObject(resultAfterWithdraw, Double.class);
 
-        Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWitdraw);
+        Assertions.assertNotEquals(balanceAfterDeposit, balanceAfterWithdraw);
     }
 
     private <T> T asObject(MvcResult result, Class<T> type) throws Exception {
