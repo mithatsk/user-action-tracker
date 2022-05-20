@@ -16,10 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AccountManagementSystemTests {
 
     @Test
-    @Disabled
     public void testErrorHandlingReturnsNotFound() {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8080/gedfsgdfgdfgfdgdfgdf";
+        String url = "http://localhost:8080/randome-endpoint";
 
         try {
             restTemplate.getForEntity(url, String.class);
@@ -29,7 +28,6 @@ public class AccountManagementSystemTests {
     }
 
     @Test
-    @Disabled
     public void testErrorHandlingReturnsBadRequest() {
         RestTemplate restTemplate = new RestTemplate();
         String url = "http://localhost:8080/account";
@@ -42,12 +40,11 @@ public class AccountManagementSystemTests {
     }
 
     @Test
-    @Disabled
     public void testCreateNewAccount() {
         RestTemplate restTemplate = new RestTemplate();
         String newAccountPostUrl = "http://localhost:8080/account/new";
         Account account = new Account("XYZ", "123");
         ResponseEntity<Account> entity = restTemplate.postForEntity(newAccountPostUrl, account, Account.class);
-        assertEquals(HttpStatus.CREATED, entity.getStatusCode());
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
     }
 }
