@@ -1,8 +1,8 @@
 package com.aprilhorizon.advice.models;
 
-public class LogResultTuple<MethodLog extends LoggedMethod, Object> {
-    private MethodLog methodLog;
-    private Object response;
+public final class LogResultTuple<MethodLog extends LoggedMethod, Object> {
+    private final MethodLog methodLog;
+    private final Object response;
 
     public LogResultTuple(MethodLog methodLog, Object response) {
         this.methodLog = methodLog;

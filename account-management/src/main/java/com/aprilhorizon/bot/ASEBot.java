@@ -10,19 +10,17 @@ import java.beans.PropertyEditor;
 import java.beans.PropertyEditorManager;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ASEBot {
 
-    private ASELogger logger = new ASELogger();
-    AccountService accountService;
+    private final ASELogger logger = new ASELogger();
+    private AccountService accountService;
 
     public void replicateActions() throws Exception {
         String actions = "[" + logger.read() + "]";
         LoggedMethod[] loggedMethods = asObject(actions, LoggedMethod[].class);
 
-        for(LoggedMethod loggedMethod : loggedMethods) {
+        for (LoggedMethod loggedMethod : loggedMethods) {
             invokeMethod(loggedMethod);
         }
     }
@@ -44,12 +42,11 @@ public class ASEBot {
         String fullClassName = loggedMethod.getClassName();
         String className = fullClassName.substring(fullClassName.lastIndexOf(' ') + 1);
         Class aClass = Class.forName(className);
-        Object instance = aClass.getDeclaredConstructor().newInstance();
-        return instance;
+        return aClass.getDeclaredConstructor().newInstance();
     }
 
     private Class<?>[] constructParameterTypes(ArrayList<LoggedArgument> arguments) {
-        List<Class> parameterTypeNames = arguments.stream().map(
+        return arguments.stream().map(
                 argument -> {
                     try {
                         return Class.forName(argument.getTypeName());
@@ -58,13 +55,11 @@ public class ASEBot {
                         return null;
                     }
                 }
-        ).collect(Collectors.toList());
-        Class<?>[] parameterTypes = parameterTypeNames.toArray(new Class<?>[parameterTypeNames.size()]);
-        return parameterTypes;
+        ).toArray(Class<?>[]::new);
     }
 
     private Object[] constructArgs(ArrayList<LoggedArgument> arguments) {
-        List<Object> argumentList = arguments.stream().map(
+        return arguments.stream().map(
                 argument -> {
                     try {
                         Class classType = Class.forName(argument.getTypeName());
@@ -76,9 +71,7 @@ public class ASEBot {
                         return null;
                     }
                 }
-        ).collect(Collectors.toList());
-        Object[] args = argumentList.toArray(new Object[argumentList.size()]);
-        return args;
+        ).toArray(Object[]::new);
     }
 
     private <T> T asObject(String result, Class<T> type) throws Exception {

@@ -13,9 +13,26 @@ env:
   POM_PATH: /${{github.workspace}}/account-management/pom.xml
 
 jobs:
+  linter:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        # Full git history is needed to get a proper list of changed files within `super-linter`
+        fetch-depth: 0
+    - name: Lint Code Base
+      uses: github/super-linter@v4
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build:
 
     runs-on: ubuntu-latest
+    needs: [linter]
 
     steps:
     - uses: actions/checkout@v3
@@ -26,7 +43,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B -DskipTests package --file $POM_PATH
+      run: mvn -B -DskipTests package --file "$POM_PATH"
 
   test:
 
@@ -36,7 +53,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run Unit and Integration Tests
-      run: mvn test --batch-mode -Dmaven.test.failure.ignore=true --file $POM_PATH
+      run: mvn test --batch-mode -Dmaven.test.failure.ignore=true --file "$POM_PATH"
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()

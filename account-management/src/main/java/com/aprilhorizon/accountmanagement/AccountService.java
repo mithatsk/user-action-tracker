@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public class AccountService {
 
-    public List<Account> accounts;
+    private List<Account> accounts;
 
     public AccountService(Account[] accounts) {
         this.accounts = Arrays.asList(accounts);
@@ -60,8 +60,7 @@ public class AccountService {
     }
 
     private Account getAccountFor(String accountNumber) {
-        Account account = accounts.stream().filter(a -> a.getAccountNumber().equals(accountNumber)).findFirst().get();
-        return account;
+        return accounts.stream().filter(a -> a.getAccountNumber().equals(accountNumber)).findFirst().orElse(null);
     }
 
     public List<Account> getAccounts() {
