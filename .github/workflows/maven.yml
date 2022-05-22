@@ -6,8 +6,12 @@ name: Java CI with Maven
 on:
   push:
     branches: [ main ]
+    paths: 
+      - 'account-management/**'
   pull_request:
     branches: [ main ]
+    paths: 
+      - 'account-management/**'
 
 env:
   POM_PATH: /${{github.workspace}}/account-management/pom.xml
