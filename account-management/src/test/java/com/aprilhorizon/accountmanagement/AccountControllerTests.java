@@ -73,8 +73,7 @@ public class AccountControllerTests {
         accountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(get("/account")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountRequest)))
+                        .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.accountName", Matchers.is(account.getAccountName())));
     }
@@ -107,8 +106,7 @@ public class AccountControllerTests {
         accountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(get("/account")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountRequest)))
+                        .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.balance", Matchers.greaterThan(0.0)));
     }
@@ -144,8 +142,7 @@ public class AccountControllerTests {
         accountRequest.setAccountNumber(account.getAccountNumber());
 
         MvcResult resultAfterDeposit = mockMvc.perform(get("/account/balance")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(accountRequest)))
+                .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -165,8 +162,7 @@ public class AccountControllerTests {
         //5 - Check Balance after withdraw
 
         MvcResult resultAfterWithdraw = mockMvc.perform(get("/account/balance")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountRequest)))
+                        .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -205,8 +201,7 @@ public class AccountControllerTests {
         accountRequest.setAccountNumber(account.getAccountNumber());
 
         MvcResult resultAfterWithdraw = mockMvc.perform(get("/account/balance")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(accountRequest)))
+                .param("accountNumber", accountRequest.getAccountNumber()))
         .andExpect(status().isOk())
         .andReturn();
 
@@ -245,8 +240,7 @@ public class AccountControllerTests {
         accountRequest.setAccountNumber(account.getAccountNumber());
 
         mockMvc.perform(get("/account")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountRequest)))
+                        .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.accountName", Matchers.not(account.getAccountName())));
     }
@@ -280,8 +274,7 @@ public class AccountControllerTests {
         accountRequest.setAccountNumber(account.getAccountNumber());
 
         MvcResult resultAfterDeposit = mockMvc.perform(get("/account/balance")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(accountRequest)))
+                .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -300,8 +293,7 @@ public class AccountControllerTests {
         //5 - Check Balance after withdraw
 
         MvcResult resultAfterWithdraw = mockMvc.perform(get("/account/balance")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(asJsonString(accountRequest)))
+                        .param("accountNumber", accountRequest.getAccountNumber()))
                 .andExpect(status().isOk())
                 .andReturn();
 
