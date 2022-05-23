@@ -8,7 +8,6 @@
 import UIKit
 
 final class AccountListViewController: UIViewController {
-    
     struct Constants {
         static let padding: CGFloat = 20
         static let buttonSize: CGFloat = 60
@@ -97,6 +96,7 @@ final class AccountListViewController: UIViewController {
     
     private func fetchAccounts() {
         accountService.fetchAccounts { [weak self] accounts, error in
+            guard error == nil else { return }
             guard let self = self else { return }
             if let accounts = accounts {
                 self.accounts = accounts
@@ -107,6 +107,7 @@ final class AccountListViewController: UIViewController {
     private func createAccount() {
         let accountName = accountNameTextField.text ?? "Saving Account"
         accountService.createAccount(request: .init(accountName: accountName)) { [weak self] account, error in
+            guard error == nil else { return }
             guard let self = self else { return }
             if account != nil {
                 self.fetchAccounts()
@@ -117,9 +118,16 @@ final class AccountListViewController: UIViewController {
 
 extension AccountListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let accountNumber = accounts[indexPath.row].accountNumber
         let viewController = AccountViewController(account: accounts[indexPath.row])
         viewController.delegate = self
-        present(UINavigationController(rootViewController: viewController), animated: true)
+        accountService.fetchAccount(request: .init(accountNumber: accountNumber)) { [weak self] account, error in
+            guard error == nil else { return }
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.present(UINavigationController(rootViewController: viewController), animated: true)
+            }
+        }
     }
 }
 

@@ -23,10 +23,16 @@ public class BaseService {
         method: HTTPMethod,
         requestBody: RequestModel,
         responseType: ResponseModel.Type,
+        parameters: [String: String] = [String: String](),
         completion: @escaping Completion<ResponseModel>
     ) {
-        guard let url = URL(string: "\(baseUrl)\(endpoint)") else { return }
-        var urlRequest = URLRequest(url: url)
+        var components = URLComponents(string: "\(baseUrl)\(endpoint)")!
+        components.queryItems = parameters.map { (key, value) in
+            URLQueryItem(name: key, value: value)
+        }
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
+        var urlRequest = URLRequest(url: components.url!)
+        
         urlRequest.httpMethod = method.rawValue
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -46,9 +52,24 @@ public class BaseService {
             }
             
             do {
-                if let value = data {
-                    let responseValue = try JSONDecoder().decode(ResponseModel.self, from: value)
+                if let value = data, !value.isEmpty {
+                    var responseValue: ResponseModel
+                    if ResponseModel.self is String.Type {
+                        responseValue = String(decoding: value, as: UTF8.self) as! ResponseModel
+                    } else {
+                        responseValue = try JSONDecoder().decode(ResponseModel.self, from: value)
+                    }
+                    
                     completion(.success(responseValue))
+                    
+                } else {
+                    let responseObject = EmptyModel()
+                    if responseObject is ResponseModel {
+                        completion(.success(responseObject as? ResponseModel))
+                    } else {
+                        let error = NetworkError(message: "Could not serialize!")
+                        completion(.failure(error))
+                    }
                 }
             } catch let err {
                 let error = NetworkError(message: "Could not decode!")
@@ -78,30 +99,14 @@ public class BaseService {
         request(endpoint: endpoint, method: .put, requestBody: requestBody, responseType: responseType, completion: completion)
     }
     
-    public func get<ResponseModel: Decodable>(
+    public func get<RequestModel: Encodable, ResponseModel: Decodable>(
         endpoint: String,
+        requestBody: RequestModel,
         responseType: ResponseModel.Type,
+        parameters: [String: String] = [String: String](),
         completion: @escaping Completion<ResponseModel>
     ) {
-        request(endpoint: endpoint, method: .get, requestBody: EmptyModel(), responseType: responseType, completion: completion)
-    }
-    
-    private func parseResponse<Response: Codable>(result: Result<Data?, NetworkError>, type: Response.Type, completion: ((Response?, NetworkError?) -> Void)?) {
-        switch result {
-        case let .success(value):
-            do {
-                if let value = value {
-                    let responseValue = try JSONDecoder().decode(Response.self, from: value)
-                    completion?(responseValue, nil)
-                }
-            } catch let err {
-                let error = NetworkError(message: "Could not decode!")
-                print(err.localizedDescription)
-                completion?(nil, error)
-            }
-        case let .failure(error):
-            print(error)
-        }
+        request(endpoint: endpoint, method: .get, requestBody: requestBody, responseType: responseType, parameters: parameters, completion: completion)
     }
 }
 

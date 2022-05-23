@@ -8,7 +8,6 @@
 import UIKit
 
 final class AccountViewController: UIViewController {
-    
     struct Constants {
         static let padding: CGFloat = 15
         static let buttonHeight: CGFloat = 60
@@ -63,6 +62,12 @@ final class AccountViewController: UIViewController {
     
     private lazy var containerStackView = configureStackView(axis: .vertical)
     
+    private lazy var accountDetailsStackView = configureStackView(axis: .horizontal)
+    
+    private let accountNumberView = KeyValueView()
+    private let accountNameView = KeyValueView()
+    private let accountBalanceView = KeyValueView()
+    
     var account: Account
     private let accountService = AccountService()
     
@@ -82,6 +87,7 @@ final class AccountViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Edit Account"
         setup()
+        setupAccountFields()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,8 +95,20 @@ final class AccountViewController: UIViewController {
         delegate?.reloadAccounts()
     }
     
+    private func setupAccountFields() {
+        accountNumberView.key = "Account Number:"
+        accountNumberView.value = account.accountNumber
+        accountNameView.key = "Account Name:"
+        accountNameView.value = account.accountName
+        accountBalanceView.key = "Balance:"
+        accountBalanceView.value = "\(account.balance)"
+    }
+    
     private func setup() {
         view.addSubview(containerStackView)
+        containerStackView.addArrangedSubview(accountNumberView)
+        containerStackView.addArrangedSubview(accountNameView)
+        containerStackView.addArrangedSubview(accountBalanceView)
         containerStackView.addArrangedSubview(accountNameStackView)
         containerStackView.addArrangedSubview(accountAmountStackView)
         containerStackView.addArrangedSubview(UIView())
@@ -107,31 +125,40 @@ final class AccountViewController: UIViewController {
         
         accountNameTextField.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
         updateNameButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-//        updateNameButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
         
         amountTextField.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
         depositButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-//        depositButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
         withdrawButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-//        withdrawButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
     }
     
     @objc
     private func updateAccountNameButtonTapped() {
         let accountName = accountNameTextField.text ?? account.accountName
-        accountService.updateName(request: .init(accountNumber: account.accountNumber, newName: accountName), completion: nil)
+        accountService.updateName(request: .init(accountNumber: account.accountNumber, newName: accountName)) { [weak self] _, error in
+            guard error == nil else { return }
+            guard let self = self else { return }
+            self.fetchAccountName()
+        }
     }
     
     @objc
     private func depositButtonTapped() {
         guard let amount = Double(amountTextField.text ?? "0.0") else { return }
-        accountService.deposit(request: .init(accountNumber: account.accountNumber, amount: amount), completion: nil)
+        accountService.deposit(request: .init(accountNumber: account.accountNumber, amount: amount)) { [weak self] _, error in
+            guard error == nil else { return }
+            guard let self = self else { return }
+            self.fetchBalance()
+        }
     }
     
     @objc
     private func withdrawButtonTapped() {
         guard let amount = Double(amountTextField.text ?? "0.0") else { return }
-        accountService.withdraw(request: .init(accountNumber: account.accountNumber, amount: amount), completion: nil)
+        accountService.withdraw(request: .init(accountNumber: account.accountNumber, amount: amount)) { [weak self] _, error in
+            guard error == nil else { return }
+            guard let self = self else { return }
+            self.fetchBalance()
+        }
     }
     
     private func configureStackView(axis: NSLayoutConstraint.Axis) -> UIStackView {
@@ -152,6 +179,25 @@ final class AccountViewController: UIViewController {
         return configuration
     }
     
+    private func fetchBalance() {
+        accountService.fetchBalance(request: .init(accountNumber: self.account.accountNumber)) { [weak self] balance, error in
+            guard error == nil, let balance = balance else { return }
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.accountBalanceView.value = "\(balance)"
+            }
+        }
+    }
+    
+    private func fetchAccountName() {
+        accountService.fetchName(request: .init(accountNumber: self.account.accountNumber)) { [weak self] name, error in
+            guard error == nil, let name = name else { return }
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.accountNameView.value = "\(name)"
+            }
+        }
+    }
 }
 
 protocol AccountListDelegate: NSObject {

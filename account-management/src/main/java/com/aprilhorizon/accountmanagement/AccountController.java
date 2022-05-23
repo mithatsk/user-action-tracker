@@ -1,17 +1,18 @@
 package com.aprilhorizon.accountmanagement;
 
 import com.aprilhorizon.accountmanagement.models.AccountAmountRequest;
-import com.aprilhorizon.accountmanagement.models.AccountRequest;
 import com.aprilhorizon.accountmanagement.models.ChangeAccountNameRequest;
 import com.aprilhorizon.accountmanagement.models.NewAccountRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -34,20 +35,20 @@ public class AccountController {
 
     @GetMapping("/account")
     @ResponseStatus(HttpStatus.OK)
-    public Account getAccount(@RequestBody AccountRequest request) {
-        return accountService.getAccount(request.getAccountNumber());
+    public Account getAccount(@RequestParam String accountNumber) {
+        return accountService.getAccount(accountNumber);
     }
 
     @GetMapping("/account/balance")
     @ResponseStatus(HttpStatus.OK)
-    public double getBalance(@RequestBody AccountRequest request) {
-        return accountService.getBalance(request.getAccountNumber());
+    public double getBalance(@RequestParam String accountNumber) {
+        return accountService.getBalance(accountNumber);
     }
 
     @GetMapping("/account/name")
     @ResponseStatus(HttpStatus.OK)
-    public String getAccountName(@RequestBody AccountRequest request) {
-        return accountService.getAccountName(request.getAccountNumber());
+    public String getAccountName(@RequestParam String accountNumber) {
+        return accountService.getAccountName(accountNumber);
     }
 
     @PostMapping("/account/new")
