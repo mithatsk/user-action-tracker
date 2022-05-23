@@ -12,7 +12,6 @@ final class AccountViewController: UIViewController {
     struct Constants {
         static let padding: CGFloat = 15
         static let buttonHeight: CGFloat = 60
-        static let buttonWidth: CGFloat = 120
     }
     
     private let accountNameTextField: UITextField = {
@@ -34,31 +33,25 @@ final class AccountViewController: UIViewController {
         return textField
     }()
     
-    private let depositButton: UIButton = {
+    private lazy var depositButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = Constants.buttonHeight / 4
-        button.backgroundColor = .systemGreen
-        button.setTitle("Deposit", for: .normal)
+        button.configuration = configureButtonConfiguration(title: "Deposit")
         button.addTarget(self, action: #selector(depositButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private let withdrawButton: UIButton = {
+    private lazy var withdrawButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = Constants.buttonHeight / 4
-        button.backgroundColor = .systemGreen
-        button.setTitle("Withdraw", for: .normal)
+        button.configuration = configureButtonConfiguration(title: "Withdraw")
         button.addTarget(self, action: #selector(withdrawButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private let updateNameButton: UIButton = {
+    private lazy var updateNameButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = Constants.buttonHeight / 4
-        button.backgroundColor = .systemGreen
-        button.setTitle("Update Name", for: .normal)
+        button.configuration = configureButtonConfiguration(title: "Update Name")
         button.addTarget(self, action: #selector(updateAccountNameButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -87,6 +80,7 @@ final class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        title = "Edit Account"
         setup()
     }
     
@@ -99,6 +93,7 @@ final class AccountViewController: UIViewController {
         view.addSubview(containerStackView)
         containerStackView.addArrangedSubview(accountNameStackView)
         containerStackView.addArrangedSubview(accountAmountStackView)
+        containerStackView.addArrangedSubview(UIView())
         accountNameStackView.addArrangedSubview(accountNameTextField)
         accountNameStackView.addArrangedSubview(updateNameButton)
         accountAmountStackView.addArrangedSubview(amountTextField)
@@ -112,13 +107,13 @@ final class AccountViewController: UIViewController {
         
         accountNameTextField.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
         updateNameButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-        updateNameButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
+//        updateNameButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
         
         amountTextField.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
         depositButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-        depositButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
+//        depositButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
         withdrawButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-        withdrawButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
+//        withdrawButton.widthAnchor.constraint(equalToConstant: Constants.buttonWidth).isActive = true
     }
     
     @objc
@@ -143,9 +138,18 @@ final class AccountViewController: UIViewController {
         let stackview = UIStackView()
         stackview.axis = axis
         stackview.spacing = Constants.padding
-        stackview.alignment = .leading
+        stackview.alignment = .fill
         stackview.translatesAutoresizingMaskIntoConstraints = false
         return stackview
+    }
+    
+    private func configureButtonConfiguration(title: String) -> UIButton.Configuration {
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = title
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        configuration.baseBackgroundColor = .systemGreen
+        configuration.cornerStyle = .small
+        return configuration
     }
     
 }

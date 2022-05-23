@@ -63,6 +63,7 @@ final class AccountListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Account List"
         setup()
         fetchAccounts()
     }
@@ -118,7 +119,7 @@ extension AccountListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = AccountViewController(account: accounts[indexPath.row])
         viewController.delegate = self
-        present(viewController, animated: true)
+        present(UINavigationController(rootViewController: viewController), animated: true)
     }
 }
 
