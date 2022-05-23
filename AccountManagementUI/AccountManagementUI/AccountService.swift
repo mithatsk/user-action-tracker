@@ -20,7 +20,7 @@ protocol AccountServiceProtocol {
 
 final class AccountService: AccountServiceProtocol {
     func fetchAccounts(completion: (([Account]?, NetworkError?) -> Void)?) {
-        BaseService.shared.get(endpoint: "account/list", responseType: [Account].self) { result in
+        BaseService.shared.get(endpoint: "account/list", requestBody: EmptyModel(), responseType: [Account].self) { result in
             switch result {
             case let .success(data):
                 completion?(data, nil)
@@ -31,7 +31,8 @@ final class AccountService: AccountServiceProtocol {
     }
     
     func fetchAccount(request: AccountRequest, completion: ((Account?, NetworkError?) -> Void)?) {
-        BaseService.shared.get(endpoint: "account", responseType: Account.self) { result in
+        let parameters = ["accountNumber": request.accountNumber]
+        BaseService.shared.get(endpoint: "account", requestBody: request, responseType: Account.self, parameters: parameters) { result in
             switch result {
             case let .success(data):
                 completion?(data, nil)
@@ -42,7 +43,8 @@ final class AccountService: AccountServiceProtocol {
     }
     
     func fetchBalance(request: AccountRequest, completion: ((Double?, NetworkError?) -> Void)?) {
-        BaseService.shared.get(endpoint: "account/balance", responseType: Double.self) { result in
+        let parameters = ["accountNumber": request.accountNumber]
+        BaseService.shared.get(endpoint: "account/balance", requestBody: request, responseType: Double.self, parameters: parameters) { result in
             switch result {
             case let .success(data):
                 completion?(data, nil)
@@ -53,7 +55,8 @@ final class AccountService: AccountServiceProtocol {
     }
     
     func fetchName(request: AccountRequest, completion: ((String?, NetworkError?) -> Void)?) {
-        BaseService.shared.get(endpoint: "account/name", responseType: String.self) { result in
+        let parameters = ["accountNumber": request.accountNumber]
+        BaseService.shared.get(endpoint: "account/name", requestBody: request, responseType: String.self, parameters: parameters) { result in
             switch result {
             case let .success(data):
                 completion?(data, nil)
