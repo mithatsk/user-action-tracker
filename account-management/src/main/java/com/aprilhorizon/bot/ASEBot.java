@@ -9,20 +9,38 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorManager;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ASEBot {
 
     private final ASELogger logger = new ASELogger();
     private AccountService accountService;
 
+    private Long executedTime;
+    private final Long maxDelayTime = Long.valueOf(2000);
+
     public void replicateActions() throws Exception {
         String actions = "[" + logger.read() + "]";
         LoggedMethod[] loggedMethods = asObject(actions, LoggedMethod[].class);
 
         for (LoggedMethod loggedMethod : loggedMethods) {
+            delayExecutionWithRealTimeDelay(loggedMethod);
             invokeMethod(loggedMethod);
         }
+    }
+
+    private void delayExecutionWithRealTimeDelay(LoggedMethod loggedMethod) throws Exception {
+        String dateTimeString = loggedMethod.getExecutionDateTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date = simpleDateFormat.parse(dateTimeString);
+        Long millis = date.getTime();
+        if (this.executedTime != null) {
+            Long delayTime = (millis - this.executedTime) < maxDelayTime ? (millis - this.executedTime) : maxDelayTime;
+            Thread.sleep(delayTime);
+        }
+        this.executedTime = millis;
     }
 
     private void invokeMethod(LoggedMethod loggedMethod) throws Exception {
