@@ -86,23 +86,11 @@
 		},
 		{
 			"name": "balance",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"accountNumber\": \"2d532dd3-5d61-4265-bb1d-1bd2240b6dfd\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:8080/account/balance",
+					"raw": "http://localhost:8080/account/balance?accountNumber=db590114-2452-4b5b-bf33-0cebc68ac4d4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -111,6 +99,12 @@
 					"path": [
 						"account",
 						"balance"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "db590114-2452-4b5b-bf33-0cebc68ac4d4"
+						}
 					]
 				}
 			},
@@ -123,7 +117,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"accountNumber\": \"f9f275ef-a359-448d-a4ed-e4bb8be524ea\",\n    \"amount\": 2000.0\n}",
+					"raw": "{\n    \"accountNumber\": \"db590114-2452-4b5b-bf33-0cebc68ac4d4\",\n    \"amount\": 2000.0\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -152,7 +146,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"accountNumber\": \"1a343799-bcee-4dbb-a627-b8545d73e1b2\",\n    \"amount\": 1054.0\n}",
+					"raw": "{\n    \"accountNumber\": \"db590114-2452-4b5b-bf33-0cebc68ac4d4\",\n    \"amount\": 1054.0\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,7 +175,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"accountNumber\": \"1a343799-bcee-4dbb-a627-b8545d73e1b2\",\n    \"newName\": \"debit account\"\n}",
+					"raw": "{\n    \"accountNumber\": \"db590114-2452-4b5b-bf33-0cebc68ac4d4\",\n    \"newName\": \"debit account\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -205,23 +199,11 @@
 		},
 		{
 			"name": "account",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"accountNumber\": \"6dad418d-5ff0-41fc-855a-566df0ff8d02\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:8080/account?accountNumber=708b89d8-429b-4eda-a532-8bf726f07c26",
+					"raw": "http://localhost:8080/account?accountNumber=db590114-2452-4b5b-bf33-0cebc68ac4d4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -233,7 +215,7 @@
 					"query": [
 						{
 							"key": "accountNumber",
-							"value": "708b89d8-429b-4eda-a532-8bf726f07c26"
+							"value": "db590114-2452-4b5b-bf33-0cebc68ac4d4"
 						}
 					]
 				}
@@ -242,23 +224,11 @@
 		},
 		{
 			"name": "name",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"accountNumber\": \"3190af80-9b4b-4890-926b-50181a3811bd\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:8080/account/name?accountNumber=708b89d8-429b-4eda-a532-8bf726f07c26",
+					"raw": "http://localhost:8080/account/name?accountNumber=db590114-2452-4b5b-bf33-0cebc68ac4d4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -271,7 +241,7 @@
 					"query": [
 						{
 							"key": "accountNumber",
-							"value": "708b89d8-429b-4eda-a532-8bf726f07c26"
+							"value": "db590114-2452-4b5b-bf33-0cebc68ac4d4"
 						}
 					]
 				}

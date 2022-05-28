@@ -1,0 +1,484 @@
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+|/  
+*   e94f92a Merge pull request #8 from mithatsk/feature/unit-test
+|\  
+| *   a2adfc8 (origin/feature/unit-test, feature/unit-test) Merge branch 'main' into feature/unit-test
+| |\  
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+|/  
+*   e94f92a Merge pull request #8 from mithatsk/feature/unit-test
+|\  
+| *   a2adfc8 (origin/feature/unit-test, feature/unit-test) Merge branch 'main' into feature/unit-test
+| |\  
+| |/  
+|/|   
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+|/  
+*   e94f92a Merge pull request #8 from mithatsk/feature/unit-test
+|\  
+| *   a2adfc8 (origin/feature/unit-test, feature/unit-test) Merge branch 'main' into feature/unit-test
+| |\  
+| |/  
+|/|   
+* | 65104b4 updated postman collection
+* | a5b607d Refactored print statements to be more declarative
+* |   8cc7f09 Merge pull request #7 from mithatsk/feature/bot-prototype
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+|/  
+*   e94f92a Merge pull request #8 from mithatsk/feature/unit-test
+|\  
+| *   a2adfc8 (origin/feature/unit-test, feature/unit-test) Merge branch 'main' into feature/unit-test
+| |\  
+| |/  
+|/|   
+* | 65104b4 updated postman collection
+* | a5b607d Refactored print statements to be more declarative
+* |   8cc7f09 Merge pull request #7 from mithatsk/feature/bot-prototype
+|\ \  
+| * | e373b5c (origin/feature/bot-prototype, feature/bot-prototype) replaced toObject method with property editor
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+|/  
+*   e94f92a Merge pull request #8 from mithatsk/feature/unit-test
+|\  
+| *   a2adfc8 (origin/feature/unit-test, feature/unit-test) Merge branch 'main' into feature/unit-test
+| |\  
+| |/  
+|/|   
+* | 65104b4 updated postman collection
+* | a5b607d Refactored print statements to be more declarative
+* |   8cc7f09 Merge pull request #7 from mithatsk/feature/bot-prototype
+|\ \  
+| * | e373b5c (origin/feature/bot-prototype, feature/bot-prototype) replaced toObject method with property editor
+| * |   2fa9b08 Merge branch 'main' into feature/bot-prototype
+:...skipping...
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+* 5b64afd (HEAD -> main, origin/main) Added MIT license
+*   506c568 Merge pull request #14 from mithatsk/feature/ui-improvements
+|\  
+| * c0676db (origin/feature/ui-improvements, feature/ui-improvements) replaced body content with parameter
+| * df68e70 Improved the UI. Refactored Backend
+|/  
+*   781cb33 Merge pull request #12 from mithatsk/feature/user-interface
+|\  
+| | * 5ab3b65 (refs/stash) WIP on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/| 
+| | * 06393e9 index on user-interface: 1a868b7 embedded vc in a navigation controller. Updated button config
+| |/  
+| * 1a868b7 (origin/feature/user-interface, feature/user-interface) embedded vc in a navigation controller. Updated button config
+| * f210c6d updated linter to check only java Project.
+| * 7c30c50 Created basic UI for interacting with backend
+|/  
+*   d2c8e40 (feature/log-constructor) Merge pull request #11 from mithatsk/feature/linter
+|\  
+| * 0f890e3 (origin/feature/linter, feature/linter) added linter and updated syntax
+|/  
+* 677e0bc removed unused test classes
+*   d5c4fa0 Merge branch 'main' of https://github.com/mithatsk/user-action-tracker
+|\  
+| *   428c1df Merge pull request #10 from mithatsk/feature/github-workflow
+| |\  
+| | * 31e3606 (origin/feature/github-workflow, feature/github-workflow) created workflow for GitHub actions
+| |/  
+* / 17948cf enabled test cases
+|/  
+*   e94f92a Merge pull request #8 from mithatsk/feature/unit-test
+|\  
+| *   a2adfc8 (origin/feature/unit-test, feature/unit-test) Merge branch 'main' into feature/unit-test
+| |\  
+| |/  
+|/|   
+* | 65104b4 updated postman collection
+* | a5b607d Refactored print statements to be more declarative
+* |   8cc7f09 Merge pull request #7 from mithatsk/feature/bot-prototype
+|\ \  
+| * | e373b5c (origin/feature/bot-prototype, feature/bot-prototype) replaced toObject method with property editor
+| * |   2fa9b08 Merge branch 'main' into feature/bot-prototype
+| |\ \  
+:
