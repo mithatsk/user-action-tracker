@@ -20,7 +20,7 @@ public class Account {
         this.balance = 0.0;
     }
 
-    public void withdraw(double amount) {
+    public void withdraw(Double amount) {
         if (this.balance >= amount) {
             this.balance -= amount;
         } else {
@@ -28,7 +28,7 @@ public class Account {
         }
     }
 
-    public void deposit(double amount) {
+    public void deposit(Double amount) {
         this.balance += amount;
     }
 

@@ -41,7 +41,7 @@ public class AccountController {
 
     @GetMapping("/account/balance")
     @ResponseStatus(HttpStatus.OK)
-    public double getBalance(@RequestParam String accountNumber) {
+    public Double getBalance(@RequestParam String accountNumber) {
         return accountService.getBalance(accountNumber);
     }
 

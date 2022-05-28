@@ -36,8 +36,8 @@ public class AccountService {
         System.out.println("deposit triggered, for account number: " + accountNumber + ", deposited amount: " + amount);
     }
 
-    public double getBalance(String accountNumber) {
-        double balance = getAccountFor(accountNumber).getBalance();
+    public Double getBalance(String accountNumber) {
+        Double balance = getAccountFor(accountNumber).getBalance();
         System.out.println("getBalance triggered, for account number: " + accountNumber + ", balance: " + balance);
         return balance;
     }
