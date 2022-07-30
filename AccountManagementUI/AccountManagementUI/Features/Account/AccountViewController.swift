@@ -69,12 +69,16 @@ final class AccountViewController: UIViewController {
     private let accountBalanceView = KeyValueView()
     
     var account: Account
-    private let accountService = AccountService()
+    private let accountService: AccountServiceProtocol
     
     weak var delegate: AccountListDelegate?
     
-    init(account: Account) {
+    init(
+        account: Account,
+        accountService: AccountServiceProtocol
+    ) {
         self.account = account
+        self.accountService = accountService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -134,9 +138,10 @@ final class AccountViewController: UIViewController {
     @objc
     private func updateAccountNameButtonTapped() {
         let accountName = accountNameTextField.text ?? account.accountName
-        accountService.updateName(request: .init(accountNumber: account.accountNumber, newName: accountName)) { [weak self] _, error in
-            guard error == nil else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (_, error) = await self.accountService.updateName(request: .init(accountNumber: self.account.accountNumber, newName: accountName))
+            guard error == nil else { return }
             self.fetchAccountName()
         }
     }
@@ -144,9 +149,10 @@ final class AccountViewController: UIViewController {
     @objc
     private func depositButtonTapped() {
         guard let amount = Double(amountTextField.text ?? "0.0") else { return }
-        accountService.deposit(request: .init(accountNumber: account.accountNumber, amount: amount)) { [weak self] _, error in
-            guard error == nil else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (_, error) = await self.accountService.deposit(request: .init(accountNumber: self.account.accountNumber, amount: amount))
+            guard error == nil else { return }
             self.fetchBalance()
         }
     }
@@ -154,9 +160,10 @@ final class AccountViewController: UIViewController {
     @objc
     private func withdrawButtonTapped() {
         guard let amount = Double(amountTextField.text ?? "0.0") else { return }
-        accountService.withdraw(request: .init(accountNumber: account.accountNumber, amount: amount)) { [weak self] _, error in
-            guard error == nil else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (_, error) = await self.accountService.withdraw(request: .init(accountNumber: self.account.accountNumber, amount: amount))
+            guard error == nil else { return }
             self.fetchBalance()
         }
     }
@@ -180,9 +187,10 @@ final class AccountViewController: UIViewController {
     }
     
     private func fetchBalance() {
-        accountService.fetchBalance(request: .init(accountNumber: self.account.accountNumber)) { [weak self] balance, error in
-            guard error == nil, let balance = balance else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (balance, error) = await self.accountService.fetchBalance(request: .init(accountNumber: self.account.accountNumber))
+            guard error == nil, let balance = balance else { return }
             DispatchQueue.main.async {
                 self.accountBalanceView.value = "\(balance)"
             }
@@ -190,9 +198,10 @@ final class AccountViewController: UIViewController {
     }
     
     private func fetchAccountName() {
-        accountService.fetchName(request: .init(accountNumber: self.account.accountNumber)) { [weak self] name, error in
-            guard error == nil, let name = name else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (name, error) = await self.accountService.fetchName(request: .init(accountNumber: self.account.accountNumber))
+            guard error == nil, let name = name else { return }
             DispatchQueue.main.async {
                 self.accountNameView.value = "\(name)"
             }

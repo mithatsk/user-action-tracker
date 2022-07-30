@@ -14,7 +14,7 @@ final class AccountListViewController: UIViewController {
         static let cellIdentifier = "cell"
     }
     
-    private let accountService = AccountService()
+    private let accountService: AccountServiceProtocol
     private var accounts = [Account]() {
         didSet {
             DispatchQueue.main.async {
@@ -60,6 +60,15 @@ final class AccountListViewController: UIViewController {
         return textField
     }()
     
+    init(accountService: AccountServiceProtocol) {
+        self.accountService = accountService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Account List"
@@ -95,9 +104,10 @@ final class AccountListViewController: UIViewController {
     }
     
     private func fetchAccounts() {
-        accountService.fetchAccounts { [weak self] accounts, error in
-            guard error == nil else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (accounts, error) = await self.accountService.fetchAccounts()
+            guard error == nil else { return }
             if let accounts = accounts {
                 self.accounts = accounts
             }
@@ -106,9 +116,10 @@ final class AccountListViewController: UIViewController {
     
     private func createAccount() {
         let accountName = accountNameTextField.text ?? "Saving Account"
-        accountService.createAccount(request: .init(accountName: accountName)) { [weak self] account, error in
-            guard error == nil else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (account, error) = await self.accountService.createAccount(request: .init(accountName: accountName))
+            guard error == nil else { return }
             if account != nil {
                 self.fetchAccounts()
             }
@@ -119,11 +130,12 @@ final class AccountListViewController: UIViewController {
 extension AccountListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let accountNumber = accounts[indexPath.row].accountNumber
-        let viewController = AccountViewController(account: accounts[indexPath.row])
-        viewController.delegate = self
-        accountService.fetchAccount(request: .init(accountNumber: accountNumber)) { [weak self] account, error in
-            guard error == nil else { return }
+        Task(priority: .background) { [weak self] in
             guard let self = self else { return }
+            let (account, error) = await self.accountService.fetchAccount(request: .init(accountNumber: accountNumber))
+            guard error == nil, let account = account else { return }
+            let viewController = AccountViewController(account: account, accountService: self.accountService)
+            viewController.delegate = self
             DispatchQueue.main.async {
                 self.present(UINavigationController(rootViewController: viewController), animated: true)
             }

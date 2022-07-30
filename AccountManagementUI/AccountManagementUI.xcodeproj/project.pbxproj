@@ -8,18 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		8A1C1F53283BF9D600DFDFF2 /* KeyValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1C1F52283BF9D600DFDFF2 /* KeyValueView.swift */; };
+		8A527F09289537D300CD18DE /* AccountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A527F08289537D300CD18DE /* AccountAPI.swift */; };
+		8A527F0D28958BC400CD18DE /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A527F0C28958BC400CD18DE /* Services.swift */; };
+		8A527F1A2895932400CD18DE /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D61283A88D300FA53B3 /* NetworkClient.swift */; };
+		8A527F1B2895932400CD18DE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A89099428953259009C1F1C /* Endpoint.swift */; };
+		8A527F1D2895949F00CD18DE /* libNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A527F12289592F100CD18DE /* libNetworking.a */; };
 		8AAF9D4A2839935800FA53B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D492839935800FA53B3 /* AppDelegate.swift */; };
 		8AAF9D532839935A00FA53B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF9D522839935A00FA53B3 /* Assets.xcassets */; };
 		8AAF9D562839935A00FA53B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAF9D542839935A00FA53B3 /* LaunchScreen.storyboard */; };
 		8AAF9D5E283993AC00FA53B3 /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D5D283993AC00FA53B3 /* AccountListViewController.swift */; };
 		8AAF9D60283A868700FA53B3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D5F283A868700FA53B3 /* Account.swift */; };
-		8AAF9D62283A88D300FA53B3 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D61283A88D300FA53B3 /* BaseService.swift */; };
 		8AAF9D64283A95FA00FA53B3 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D63283A95FA00FA53B3 /* AccountService.swift */; };
 		8AAF9D66283ABDFD00FA53B3 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF9D65283ABDFD00FA53B3 /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8A527F1E2895949F00CD18DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AAF9D3E2839935800FA53B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A527F11289592F100CD18DE;
+			remoteInfo = Networking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A527F10289592F100CD18DE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8A1C1F52283BF9D600DFDFF2 /* KeyValueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueView.swift; sourceTree = "<group>"; };
+		8A527F08289537D300CD18DE /* AccountAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAPI.swift; sourceTree = "<group>"; };
+		8A527F0C28958BC400CD18DE /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		8A527F12289592F100CD18DE /* libNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A89099428953259009C1F1C /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		8AAF9D462839935800FA53B3 /* AccountManagementUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccountManagementUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAF9D492839935800FA53B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAF9D522839935A00FA53B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -27,27 +57,83 @@
 		8AAF9D572839935A00FA53B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AAF9D5D283993AC00FA53B3 /* AccountListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
 		8AAF9D5F283A868700FA53B3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		8AAF9D61283A88D300FA53B3 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		8AAF9D61283A88D300FA53B3 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		8AAF9D63283A95FA00FA53B3 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		8AAF9D65283ABDFD00FA53B3 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8AAF9D432839935800FA53B3 /* Frameworks */ = {
+		8A527F0F289592F100CD18DE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AAF9D432839935800FA53B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A527F1D2895949F00CD18DE /* libNetworking.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A527F0A28956F1100CD18DE /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				8A527F0B28956F6B00CD18DE /* Account */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		8A527F0B28956F6B00CD18DE /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				8AAF9D5F283A868700FA53B3 /* Account.swift */,
+				8A527F08289537D300CD18DE /* AccountAPI.swift */,
+				8AAF9D5D283993AC00FA53B3 /* AccountListViewController.swift */,
+				8AAF9D63283A95FA00FA53B3 /* AccountService.swift */,
+				8AAF9D65283ABDFD00FA53B3 /* AccountViewController.swift */,
+				8A1C1F52283BF9D600DFDFF2 /* KeyValueView.swift */,
+				8A527F0C28958BC400CD18DE /* Services.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		8A527F13289592F100CD18DE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8AAF9D61283A88D300FA53B3 /* NetworkClient.swift */,
+				8A89099428953259009C1F1C /* Endpoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8A527F1C2895949F00CD18DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A527F20289595EE00CD18DE /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8A527F13289592F100CD18DE /* Networking */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		8AAF9D3D2839935800FA53B3 = {
 			isa = PBXGroup;
 			children = (
+				8A527F20289595EE00CD18DE /* Modules */,
 				8AAF9D482839935800FA53B3 /* AccountManagementUI */,
 				8AAF9D472839935800FA53B3 /* Products */,
+				8A527F1C2895949F00CD18DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				8AAF9D462839935800FA53B3 /* AccountManagementUI.app */,
+				8A527F12289592F100CD18DE /* libNetworking.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,13 +149,8 @@
 		8AAF9D482839935800FA53B3 /* AccountManagementUI */ = {
 			isa = PBXGroup;
 			children = (
+				8A527F0A28956F1100CD18DE /* Features */,
 				8AAF9D492839935800FA53B3 /* AppDelegate.swift */,
-				8AAF9D5D283993AC00FA53B3 /* AccountListViewController.swift */,
-				8AAF9D65283ABDFD00FA53B3 /* AccountViewController.swift */,
-				8A1C1F52283BF9D600DFDFF2 /* KeyValueView.swift */,
-				8AAF9D5F283A868700FA53B3 /* Account.swift */,
-				8AAF9D61283A88D300FA53B3 /* BaseService.swift */,
-				8AAF9D63283A95FA00FA53B3 /* AccountService.swift */,
 				8AAF9D522839935A00FA53B3 /* Assets.xcassets */,
 				8AAF9D542839935A00FA53B3 /* LaunchScreen.storyboard */,
 				8AAF9D572839935A00FA53B3 /* Info.plist */,
@@ -79,6 +161,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8A527F11289592F100CD18DE /* Networking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A527F16289592F100CD18DE /* Build configuration list for PBXNativeTarget "Networking" */;
+			buildPhases = (
+				8A527F0E289592F100CD18DE /* Sources */,
+				8A527F0F289592F100CD18DE /* Frameworks */,
+				8A527F10289592F100CD18DE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Networking;
+			productName = Networking;
+			productReference = 8A527F12289592F100CD18DE /* libNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		8AAF9D452839935800FA53B3 /* AccountManagementUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8AAF9D5A2839935A00FA53B3 /* Build configuration list for PBXNativeTarget "AccountManagementUI" */;
@@ -90,6 +189,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8A527F1F2895949F00CD18DE /* PBXTargetDependency */,
 			);
 			name = AccountManagementUI;
 			productName = AccountManagementUI;
@@ -106,6 +206,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					8A527F11289592F100CD18DE = {
+						CreatedOnToolsVersion = 13.2;
+					};
 					8AAF9D452839935800FA53B3 = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -125,6 +228,7 @@
 			projectRoot = "";
 			targets = (
 				8AAF9D452839935800FA53B3 /* AccountManagementUI */,
+				8A527F11289592F100CD18DE /* Networking */,
 			);
 		};
 /* End PBXProject section */
@@ -142,13 +246,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8A527F0E289592F100CD18DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A527F1B2895932400CD18DE /* Endpoint.swift in Sources */,
+				8A527F1A2895932400CD18DE /* NetworkClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8AAF9D422839935800FA53B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AAF9D62283A88D300FA53B3 /* BaseService.swift in Sources */,
 				8AAF9D5E283993AC00FA53B3 /* AccountListViewController.swift in Sources */,
+				8A527F09289537D300CD18DE /* AccountAPI.swift in Sources */,
 				8AAF9D66283ABDFD00FA53B3 /* AccountViewController.swift in Sources */,
+				8A527F0D28958BC400CD18DE /* Services.swift in Sources */,
 				8AAF9D4A2839935800FA53B3 /* AppDelegate.swift in Sources */,
 				8AAF9D64283A95FA00FA53B3 /* AccountService.swift in Sources */,
 				8AAF9D60283A868700FA53B3 /* Account.swift in Sources */,
@@ -157,6 +271,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A527F1F2895949F00CD18DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A527F11289592F100CD18DE /* Networking */;
+			targetProxy = 8A527F1E2895949F00CD18DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8AAF9D542839935A00FA53B3 /* LaunchScreen.storyboard */ = {
@@ -170,6 +292,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8A527F17289592F100CD18DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A527F18289592F100CD18DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8AAF9D582839935A00FA53B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -293,6 +439,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8G26AMMYL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountManagementUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -303,12 +450,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Modules",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mithatkaskara.AccountManagementUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(PROJECT_DIR)/Modules";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,6 +471,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8G26AMMYL2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AccountManagementUI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -329,18 +482,32 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Modules",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mithatkaskara.AccountManagementUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(PROJECT_DIR)/Modules";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8A527F16289592F100CD18DE /* Build configuration list for PBXNativeTarget "Networking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A527F17289592F100CD18DE /* Debug */,
+				8A527F18289592F100CD18DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8AAF9D412839935800FA53B3 /* Build configuration list for PBXProject "AccountManagementUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

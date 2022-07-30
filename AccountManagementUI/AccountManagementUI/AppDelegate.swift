@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: AccountListViewController())
+        window?.rootViewController = UINavigationController(rootViewController: AccountListViewController(accountService: Services.accountService))
         window?.makeKeyAndVisible()
         return true
     }
